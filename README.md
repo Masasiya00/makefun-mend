@@ -4,19 +4,16 @@
 [![rank](https://make.fun/badge/hidden-spec-cli-01-run-20261122/Masasiya00/makefun-mend/rank.svg)](https://make.fun/bounty/hidden-spec-cli-01-run-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=hidden-spec-cli-01-run-20261122)
 [![reward](https://make.fun/badge/hidden-spec-cli-01-run-20261122/Masasiya00/makefun-mend/reward.svg)](https://make.fun/bounty/hidden-spec-cli-01-run-20261122?utm_source=github&utm_medium=readme&utm_campaign=hidden-spec-cli-01-run-20261122)
 
-One patch tool for every AI edit format. Built for the [make.fun bounty](https://make.fun/bounty/hidden-spec-cli-01-run-20261122).
+mend is one patch tool for every AI edit format: unified diff, SEARCH/REPLACE blocks, V4A patches, and JSON editor calls. It finds the lines each edit names at the first of three matching tiers (exact, trailing whitespace, then indentation), and applies every change atomically — all of them, or none at all.
 
-`mend` applies an edit that an AI model wrote to a tree of text files.
-It reads four formats — unified diffs, SEARCH/REPLACE blocks, V4A
-patches, and text-editor tool calls as JSON — finds the lines each edit
-names at the first of three matching tiers, and writes every change or
-none.
+## Usage
 
-Run it as:
+```
+node main.ts [--format=NAME] [--check] [--strict] [PATCH]
+```
 
-    node main.ts [--format=NAME] [--check] [--strict] [PATCH]
+`PATCH` is the path of the patch file, relative to the working directory; when it is absent or `-`, the patch is read from standard input. `--format` is `unified`, `search-replace`, `v4a`, `json`, or `auto` (the default, which detects the format). `--check` does everything but write. `--strict` matches lines exactly.
 
-Node 22 and its standard library only. The full contract is SPEC.md in
-the make.fun kit for `hidden-spec-cli-01-run-20261122`.
+Node 22, standard library only — no dependencies, no install step.
 
 License: MIT.
